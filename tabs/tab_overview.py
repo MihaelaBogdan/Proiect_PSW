@@ -90,7 +90,7 @@ def render():
     pop_genre = df.groupby("genre")["popularity"].mean().reset_index().sort_values("popularity", ascending=False)
     fig_pop = px.funnel(
       pop_genre,
-      x="popularity", y="genre",
+      x="popularity", labels={"popularity": "Popularitate", "energy": "Energie", "danceability": "Dansabilitate", "valence": "Valență", "tempo": "Tempo", "acousticness": "Acusticitate", "speechiness": "Vocale", "genre": "Gen Muzical"}, y="genre",
       color="genre",
       color_discrete_map=GENRE_COLORS,
       template="plotly_dark",

@@ -43,7 +43,7 @@ def render():
   df_pca["PC2"] = components[:, 1]
 
   fig_pca = px.scatter(
-    df_pca, x="PC1", y="PC2", color="genre",
+    df_pca, x="PC1", labels={"PC1": "Componenta Principală 1", "PC2": "Componenta Principală 2", "genre": "Gen Muzical", "tip": "Tip (Normal/Outlier)"}, y="PC2", color="genre",
     hover_data=["track_name", "artist_name", "popularity"],
     title=f"PCA 2D — Varianta explicată: PC1={var_exp[0]:.1%}, PC2={var_exp[1]:.1%}",
     template="plotly_dark", opacity=0.7,
@@ -79,7 +79,7 @@ def render():
   st.metric("Outlieri detectați", n_out, f"{n_out/len(df_pca):.1%} din date")
 
   fig_out = px.scatter(
-    df_pca, x="PC1", y="PC2", color="tip",
+    df_pca, x="PC1", labels={"PC1": "Componenta Principală 1", "PC2": "Componenta Principală 2", "genre": "Gen Muzical", "tip": "Tip (Normal/Outlier)"}, y="PC2", color="tip",
     color_discrete_map={"Normal": "#1db954", "Outlier": "#e91e63"},
     hover_data=["track_name", "artist_name", "genre"],
     title="Outlieri detectați cu Isolation Forest (spațiu PCA)",
@@ -97,7 +97,7 @@ def render():
   # ── 4. Violinplot popularitate ────────────────────────────────────────────
   st.subheader("4. Distribuție popularitate per gen — Violin Plot")
   fig_vio = px.violin(
-    df, x="genre", y="popularity", color="genre",
+    df, x="genre", labels={"genre": "Gen Muzical", "count": "Număr Piese", "popularity": "Popularitate", "energy": "Energie", "danceability": "Dansabilitate", "valence": "Valență", "tempo": "Tempo", "acousticness": "Acusticitate", "speechiness": "Vocale"}, y="popularity", color="genre",
     box=True, points="outliers",
     title="Violin Plot: Distribuția popularității per gen muzical",
     template="plotly_dark",

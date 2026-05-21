@@ -53,7 +53,7 @@ def render():
 
   col1, col2 = st.columns(2)
   with col1:
-    fig = px.bar(grouped, x="genre", y="Popularitate_Medie",
+    fig = px.bar(grouped, x="genre", labels={"genre": "Gen Muzical", "count": "Număr Piese", "popularity": "Popularitate", "energy": "Energie", "danceability": "Dansabilitate", "valence": "Valență", "tempo": "Tempo", "acousticness": "Acusticitate", "speechiness": "Vocale"}, y="Popularitate_Medie",
            color="genre", text_auto=".1f",
            title="Popularitate Medie per Gen",
            template="plotly_dark")
@@ -92,7 +92,7 @@ def render():
                 title=f"Histogramă: {feat_sel}", template="plotly_dark")
     st.plotly_chart(fig_hist, use_container_width=True)
   with col4:
-    fig_box = px.box(df, x="genre", y=feat_sel, color="genre",
+    fig_box = px.box(df, x="genre", labels={"genre": "Gen Muzical", "count": "Număr Piese", "popularity": "Popularitate", "energy": "Energie", "danceability": "Dansabilitate", "valence": "Valență", "tempo": "Tempo", "acousticness": "Acusticitate", "speechiness": "Vocale"}, y=feat_sel, color="genre",
              title=f"Boxplot: {feat_sel} per gen",
              template="plotly_dark")
     fig_box.update_layout(showlegend=False, xaxis_tickangle=-45)

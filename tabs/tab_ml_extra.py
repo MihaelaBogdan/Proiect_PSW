@@ -68,7 +68,7 @@ def render():
         "R-squared": [r2_dt, r2_rf]
     })
     
-    fig_comp = px.bar(comp_df, x="Model", y="R-squared", color="Model",
+    fig_comp = px.bar(comp_df, x="Model", labels={"Model": "Model de Predicție", "R-squared": "Scor R-Pătrat"}, y="R-squared", color="Model",
                       title="Comparatie R-squared: Arbori vs Pădure", template="plotly_dark")
     st.plotly_chart(fig_comp, use_container_width=True)
 
@@ -90,7 +90,7 @@ def render():
             fig_ts.add_trace(go.Scatter(x=time_df['year'], y=smoothed, mode='lines', name=col))
             
         fig_ts.update_layout(title="Evolutia temporala (Medie mobila 3 ani)", 
-                             xaxis_title="An", yaxis_title="Valoare Medie", template="plotly_dark")
+                             xaxis_title="Anul Lansării", yaxis_title="Valoarea Medie a Atributului", template="plotly_dark")
         st.plotly_chart(fig_ts, use_container_width=True)
 
     # --- 4. Cross-tabulation si Heatmap Avansat ---
