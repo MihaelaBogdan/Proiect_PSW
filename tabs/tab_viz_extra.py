@@ -39,7 +39,7 @@ def render():
 
 
     # --- 2. Sunburst Chart ---
-    st.subheader("2. Sunburst Chart: Evoluția Ierarhică (Deceniu ➔ Gen ➔ Explicit)")
+    st.subheader("2. Sunburst Chart: Evoluția Ierarhică (Deceniu  Gen  Explicit)")
     st.write("Navighează ierarhic dând click pe componentele cercului pentru a explora structura datelor.")
     
     # Filtram pentru claritate

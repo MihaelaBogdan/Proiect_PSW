@@ -9,7 +9,7 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 import plotly.express as px
 
 def render():
-  st.markdown("# 🤖 Clasificare (Regresie Logistică)")
+  st.markdown("#  Clasificare (Regresie Logistică)")
   
   if "processed_data" not in st.session_state:
     st.warning("Te rog să rulezi mai întâi Preprocesarea Datelor!")

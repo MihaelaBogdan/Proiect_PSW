@@ -7,7 +7,7 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler, MinMaxScaler, LabelEncoder
 
 def render():
-  st.markdown("# 🧹 Preprocesare Date")
+  st.markdown("#  Preprocesare Date")
   st.markdown("În această secțiune tratăm valorile lipsă, codificăm datele categorice și scalăm variabilele numerice.")
   
   if "raw_data" not in st.session_state:
