@@ -194,6 +194,39 @@ RUN;
 %AnalizaGen(gen_nume=pop);
 %AnalizaGen(gen_nume=hip-hop);
 
+/* ─── 12. ANALIZE AVANSATE ("WOW" FACTOR) ───────────────── */
+
+TITLE2 "WOW 1: Analiza de Varianta (ANOVA) - Exista diferente semnificative intre genuri?";
+PROC GLM DATA=WORK.spotify_enriched;
+    CLASS genre;
+    MODEL popularity = genre;
+    MEANS genre / TUKEY LINES; /* Testul Tukey pt a vedea ce genuri difera concret */
+RUN;
+QUIT;
+
+TITLE2 "WOW 2: Scatter Plot Matrix Avansat (SGSCATTER)";
+PROC SGSCATTER DATA=WORK.spotify_enriched(OBS=500); /* Limitare pentru vizibilitate clara */
+    MATRIX popularity energy danceability valence / 
+           GROUP=pop_categ DIAGONAL=(HISTOGRAM KERNEL)
+           MARKERATTRS=(SIZE=4) TRANSPARENCY=0.5;
+RUN;
+
+TITLE2 "WOW 3: Raport Incrucisat Tridimensional (PROC TABULATE)";
+PROC TABULATE DATA=WORK.spotify_enriched FORMAT=COMMA8.1;
+    CLASS genre pop_categ explicit;
+    VAR popularity energy;
+    TABLE genre * explicit, 
+          pop_categ * (popularity*MEAN energy*MEAN) / 
+          RTS=30 BOX="Raport Complex Performanta";
+RUN;
+
+TITLE2 "WOW 4: Discriminant Analysis (ML Avansat pt Clasificare Gen)";
+/* Incercam sa ghicim genul muzical pe baza variabilelor audio */
+PROC DISCRIM DATA=WORK.spotify_enriched POOL=YES CROSSVALIDATE;
+    CLASS genre;
+    VAR danceability energy valence tempo acousticness;
+RUN;
+
 /* ─── EXPORT rezultate finale ───────────────────────────── */
 PROC EXPORT DATA=WORK.spotify_enriched
     OUTFILE = "spotify_final_sas.csv"
