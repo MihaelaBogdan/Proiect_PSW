@@ -181,6 +181,28 @@ PROC SGPANEL DATA=WORK.spotify_enriched (WHERE=(year >= 2000 AND genre IN ('pop'
     REG X=year Y=popularity / LINEATTRS=(COLOR="red");
 RUN;
 
+TITLE2 "Grafice: Harta de Caldura (Heatmap) - Gen muzical vs Categorie Popularitate";
+PROC SGPLOT DATA=WORK.spotify_enriched;
+    HEATMAP X=genre Y=pop_categ / COLORMODEL=(white lightblue blue) DISCRETEX DISCRETEY;
+RUN;
+
+TITLE2 "Grafice: Bubble Plot Interactiv - Dansabilitate vs Energie vs Popularitate (Dimensiune)";
+PROC SGPLOT DATA=WORK.spotify_enriched(OBS=200); /* Luam un esantion vizibil */
+    BUBBLE X=energy Y=danceability SIZE=popularity / GROUP=genre 
+           TRANSPARENCY=0.4 MARKERATTRS=(SYMBOL=circlefilled);
+RUN;
+
+TITLE2 "Grafice: Grafic de Bare Orizontal (HBAR) - Medii Energie per Gen";
+PROC SGPLOT DATA=WORK.spotify_enriched;
+    HBAR genre / RESPONSE=energy STAT=MEAN FILLATTRS=(COLOR="orange") DATALABEL;
+    XAXIS LABEL="Energie Medie";
+RUN;
+
+TITLE2 "Grafice: Grafic de Densitate Overlap (Pop vs Rock)";
+PROC SGPLOT DATA=WORK.spotify_enriched(WHERE=(genre IN ('pop', 'rock')));
+    DENSITY popularity / TYPE=KERNEL GROUP=genre LINEATTRS=(THICKNESS=2) FILL TRANSPARENCY=0.5;
+RUN;
+
 /* ─── 11. Macro-uri SAS ─────────────────────────────────── */
 %MACRO AnalizaGen(gen_nume=);
     TITLE2 "Analiza automata macro pentru genul: &gen_nume";
