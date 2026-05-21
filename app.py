@@ -90,6 +90,7 @@ from tabs import (
   tab_classification,
   tab_advanced,
   tab_ml_extra,
+  tab_viz_extra
 )
 
 # ── Sidebar navigation ───────────────────────────────────────────────────────
@@ -105,6 +106,7 @@ PAGES = {
   " Clasificare (Logistic)":  "classification",
   " Analiză Avansată":     "advanced",
   " Machine Learning Extra": "ml_extra",
+  " Vizualizări 3D & Radar": "viz_extra",
 }
 
 page_label = st.sidebar.radio("Navigare", list(PAGES.keys()))
@@ -136,3 +138,5 @@ elif page == "advanced":
   tab_advanced.render()
 elif page == "ml_extra":
   tab_ml_extra.render()
+elif page == "viz_extra":
+  tab_viz_extra.render()
