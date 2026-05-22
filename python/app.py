@@ -1,13 +1,5 @@
-"""
-app.py — Spotify Tracks Analysis Dashboard
-==========================================
-Aplicație Streamlit multi-pagină pentru analiza platformei Spotify.
-Rulați cu: streamlit run app.py
-"""
-
 import streamlit as st
 
-# ── Configurare pagină (trebuie să fie prima comandă Streamlit) ─────────────
 st.set_page_config(
   page_title="Spotify Analytics Dashboard",
   page_icon="",
@@ -15,7 +7,6 @@ st.set_page_config(
   initial_sidebar_state="expanded",
 )
 
-# ── CSS personalizat ─────────────────────────────────────────────────────────
 st.markdown("""
 <style>
  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -93,7 +84,6 @@ from tabs import (
   tab_viz_extra
 )
 
-# ── Sidebar navigation ───────────────────────────────────────────────────────
 st.sidebar.markdown("## Spotify Analytics")
 st.sidebar.markdown("---")
 
@@ -112,16 +102,7 @@ PAGES = {
 page_label = st.sidebar.radio("Navigare", list(PAGES.keys()))
 page = PAGES[page_label]
 
-st.sidebar.markdown("---")
-st.sidebar.markdown("""
-<div style='font-size:12px; color:#666; text-align:center; padding:10px;'>
-Proiect Analiză Date<br>
-Spotify Tracks Dataset<br>
-<span style='color:#1db954'>Python • Streamlit • ML</span>
-</div>
-""", unsafe_allow_html=True)
 
-# ── Rutare pagini ─────────────────────────────────────────────────────────────
 if page == "overview":
   tab_overview.render()
 elif page == "preprocessing":
