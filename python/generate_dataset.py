@@ -209,7 +209,8 @@ df.loc[idxs[:10], "tempo"] = np.random.uniform(250, 400, 10)
 df.loc[idxs[10:20], "loudness"] = np.random.uniform(-70, -65, 10)
 df.loc[idxs[20:], "popularity"] = np.random.uniform(102, 120, 10)
 
-output_path = "spotify_tracks.csv"
+import os
+output_path = os.path.join(os.path.dirname(__file__), "spotify_tracks.csv")
 df.to_csv(output_path, index=False)
 print(f"✅ Dataset generat: {output_path}")
 print(f"   Shape: {df.shape}")

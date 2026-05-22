@@ -11,7 +11,8 @@ def render():
   st.markdown("În această secțiune tratăm valorile lipsă, codificăm datele categorice și scalăm variabilele numerice.")
   
   if "raw_data" not in st.session_state:
-    st.session_state.raw_data = pd.read_csv("spotify_tracks.csv")
+    from data_loader import load_data
+    st.session_state.raw_data = load_data()
   
   df = st.session_state.raw_data.copy()
   

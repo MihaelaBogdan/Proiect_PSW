@@ -1,17 +1,26 @@
 """
 data_loader.py — Încarcă și cache-uiește datasetul Spotify
 """
+import os
 import pandas as pd
 import streamlit as st
 
 @st.cache_data
 def load_data() -> pd.DataFrame:
-    try:
-        df = pd.read_csv("spotify_tracks.csv")
-    except FileNotFoundError:
-        st.error("❌ Fișierul `spotify_tracks.csv` nu a fost găsit. Rulați `generate_dataset.py` mai întâi.")
-        st.stop()
-    return df
+    # Caută fișierul atât în directorul curent de lucru, cât și în cel în care se află scriptul
+    paths_to_try = [
+        "spotify_tracks.csv",
+        os.path.join(os.path.dirname(__file__), "spotify_tracks.csv")
+    ]
+    for path in paths_to_try:
+        if os.path.exists(path):
+            try:
+                return pd.read_csv(path)
+            except Exception:
+                pass
+                
+    st.error("❌ Fișierul `spotify_tracks.csv` nu a fost găsit. Rulați `generate_dataset.py` mai întâi.")
+    st.stop()
 
 AUDIO_FEATURES = [
     "danceability", "energy", "valence", "tempo",
