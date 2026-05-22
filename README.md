@@ -1,6 +1,6 @@
-# 📚 Proiect Spotify Analytic
+#  Proiect PSW - Analiza Platformei Spotify utilizand Python si SAS
 
-## 📦 Descriere
+## Descriere
 Acest proiect este un **dashboard Streamlit complet** pentru analiza unui dataset Spotify (5.000 de piese).  Include:
 - Generare dataset sintetic (script `generate_dataset.py`).
 - Încărcare & cache (`data_loader.py`).
@@ -9,7 +9,7 @@ Acest proiect este un **dashboard Streamlit complet** pentru analiza unui datase
   - (alte tab‑uri pot fi adăugate: preprocessing, statistici, clustering, regresie, clasificare, analize avansate).
 - Design premium: dark‑mode, gradient, micro‑animări, font **Inter**.
 
-## ⚙️ Instalare și configurare
+##  Instalare și configurare
 1. **Deschide terminalul în directorul proiectului**
    ```bash
    cd /Users/mihaela/Desktop/Proiect_pachete
@@ -30,7 +30,7 @@ Acest proiect este un **dashboard Streamlit complet** pentru analiza unui datase
    ```
    Acest script creează `spotify_tracks.csv` în directorul proiectului.
 
-## 📥 Obținerea unui dataset real (opțional)
+##  Obținerea unui dataset real (opțional)
 - **Kaggle** – există *Spotify Songs Dataset* pe Kaggle. Pentru a-l descărca:
   1. Instalează `kaggle` în mediul virtual:
      ```bash
@@ -43,7 +43,7 @@ Acest proiect este un **dashboard Streamlit complet** pentru analiza unui datase
      ```
   4. Redenumește fișierul descărcat în `spotify_tracks.csv` sau modifică `load_data()` să citească numele corect.
 
-## 🚀 Rulare aplicație
+##  Rulare aplicație
 După ce mediul este activat și `spotify_tracks.csv` există, pornește dashboard‑ul:
 ```bash
 streamlit run app.py
@@ -64,7 +64,7 @@ Proiect_pachete/
 └─ README.md            # acest fișier
 ```
 
-## 🛠️ Depanare `ModuleNotFoundError: No module 'streamlit'`
+##  Depanare `ModuleNotFoundError: No module 'streamlit'`
 1. **Asigură-te că mediul virtual este activ** (`source venv/bin/activate`).
 2. **Verifică instalarea**:
    ```bash
@@ -77,13 +77,13 @@ Proiect_pachete/
    ./venv/bin/pip uninstall streamlit -y && ./venv/bin/pip install streaml i t
    ```
 
-## 🎨 Design & UX
+##  Design & UX
 - Font: *Inter* (Google Fonts) – se încarcă în CSS.
 - Paletă: tonuri închise, verde Spotify (`#1db954`).
 - Carduri KPI, grafice Plotly în stil *dark*.
 - Sidebar cu navigare intuitivă și informații de contact.
 
-## 📈 Ce poți adăuga în continuare
+##  Ce poți adăuga în continuare
 - **Pre‑processing** – curățare valori lipsă, scaling.
 - **Statistici descriptive** – corelații, heatmap.
 - **Clustering** – K‑Means pe caracteristici audio, vizualizare PCA.
@@ -91,5 +91,5 @@ Proiect_pachete/
 - **Clasificare** – logistic regression pentru genuri.
 - **Analiză avansată** – modelare mixtă, SHAP explicabilitate.
 
----
-*Acest README poate fi extins cu exemple de cod pentru fiecare secțiune suplimentară.*
+
+
