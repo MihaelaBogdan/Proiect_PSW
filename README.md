@@ -11,9 +11,8 @@ Acest proiect este un **dashboard Streamlit complet** pentru analiza unui datase
 
 ##  Instalare și configurare
 1. **Deschide terminalul în directorul proiectului**
-   ```bash
-   cd /Users/mihaela/Desktop/Proiect_pachete
-   ```
+   
+   
 2. **Creează un mediu virtual și instalează dependențele** (comanda a fost deja pornită în fundal, așteaptă finalizarea). Dacă vrei să rulezi manual:
    ```bash
    python3 -m venv venv               # creează mediul virtual
@@ -50,7 +49,7 @@ streamlit run app.py
 ```
 **Important:** comanda trebuie executată din directorul `Proiect_pachete`, nu din `Embeddings`. Dacă rulezi din altă locație, Python nu găsește pachetul `streamlit` (module‑not‑found).
 
-## 📂 Structura directorului
+##  Structura directorului
 ```
 Proiect_pachete/
 ├─ app.py               # intrare Streamlit
